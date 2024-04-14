@@ -3,6 +3,7 @@ pipeline{
     environment {
         HEROKU_API_KEY = credentials('heroku-api-key')
         HEROKU_APP_NAME = 'devops-ip1'
+        HEROKU_APP_URL = 'https://devops-ip1-f1da9419f34e.herokuapp.com/'
     }
     tools{
         nodejs 'npm'
@@ -37,7 +38,6 @@ pipeline{
         stage("Deploy") {
            steps {
                 script {
-                    sh "echo ':api_key:${HEROKU_API_KEY}' | docker login --username=_ --password-stdin registry.heroku.com"
                     sh "git remote add heroku https://git.heroku.com/${HEROKU_APP_NAME}.git"
                     sh "git push heroku master"
                 }
@@ -49,7 +49,7 @@ pipeline{
             slackSend (
                 channel: env.SLACK_CHANNEL, 
                 color: '#FFFF00', 
-                message: "Build ${env.BUILD_NUMBER} completed"
+                message: "Build ${env.BUILD_NUMBER} completed. View the site here: ${HEROKU_APP_URL}"
             )
         }
     }
