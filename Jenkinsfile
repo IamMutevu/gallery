@@ -42,15 +42,15 @@ pipeline{
                     sh "git push heroku master"
                 }
             }
-        }
-    }
-    post {
-        always {
-            slackSend (
-                channel: env.SLACK_CHANNEL, 
-                color: '#FFFF00', 
-                message: "Build ${env.BUILD_NUMBER} completed. View the site here: ${HEROKU_APP_URL}"
-            )
+            post {
+                success {
+                    slackSend (
+                        channel: env.SLACK_CHANNEL, 
+                        color: '#FFFF00', 
+                        message: "Build ${env.BUILD_NUMBER} completed. View the site here: ${HEROKU_APP_URL}"
+                    )
+                }
+            }
         }
     }
 }
