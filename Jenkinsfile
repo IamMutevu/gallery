@@ -12,9 +12,9 @@ pipeline{
         stage("Prepare and Build Code") {
             steps {
                 echo 'Installing dependencies...'
-                sh 'npm install' // Install all dependencies
+                sh 'npm install' 
                 echo 'Building the application...'
-                sh 'npm run build' // Run the build script specified in package.json
+                sh 'npm run build'
             }
         }
     }
