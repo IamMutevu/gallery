@@ -6,7 +6,7 @@ pipeline{
                 git branch: 'master', url: 'https://github.com/IamMutevu/gallery.git'
             }
         }
-        stage("Install Node.js") {
+        stage("Install Node.js for use") {
             agent {
                 docker {
                     image 'node:7.4'
