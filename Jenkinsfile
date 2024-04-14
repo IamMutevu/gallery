@@ -6,5 +6,10 @@ pipeline{
                 git branch: 'master', url: 'https://github.com/IamMutevu/gallery.git'
             }
         }
+        stage("Build Code"){
+            steps{
+                sh 'npm install'
+            }
+        }
     }
 }
