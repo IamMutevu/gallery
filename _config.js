@@ -7,3 +7,5 @@ config.mongoURI = {
     test: 'mongodb+srv://<USERNAME>:<PASSWORD>@gallery.wc344.mongodb.net/darkroom-test?retryWrites=true&w=majority',
 }
 module.exports = config;
+
+// mongodb+srv://mutevu:5yKuyb8KNq4ttVcD@devopscluster.bzqcj9t.mongodb.net/?retryWrites=true&w=majority&appName=devopsCluster
