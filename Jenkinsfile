@@ -12,7 +12,7 @@ pipeline{
         stage("Prepare and Build Code") {
             steps {
                 sh 'npm install' 
-                sh 'node server'
+                // sh 'node server'
             }
         }
     }
