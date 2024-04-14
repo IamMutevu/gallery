@@ -9,18 +9,16 @@ pipeline{
         }
         stage("Prepare and Build Code") {
             agent {
-                docker {
+                any {
                     image 'node:16-alpine' 
                     args '-v /home/jenkins/.npm:/root/.npm' 
                 }
             }
             steps {
-                withNPM(npmrcConfig:'my-custom-npmrc') {
-                    echo "Installing dependencies..."
-                    sh 'npm install'
-                    echo "Performing npm build..."
-                    sh 'npm run build'  // Assuming there's a build script in package.json
-                }
+                echo 'Installing dependencies...'
+                sh 'npm install' // Install all dependencies
+                echo 'Building the application...'
+                sh 'npm run build' // Run the build script specified in package.json
             }
         }
     }
