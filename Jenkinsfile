@@ -11,10 +11,8 @@ pipeline{
         }
         stage("Prepare and Build Code") {
             steps {
-                echo 'Installing dependencies...'
                 sh 'npm install' 
-                echo 'Building the application...'
-                sh 'npm run build'
+                sh 'node server'
             }
         }
     }
