@@ -8,7 +8,8 @@ pipeline{
         }
         stage("Install Node.js") {
             steps {
-                sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
+                sh 'curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh'
+                sh 'bash nodesource_setup.sh'
                 sh 'apt-get install -y nodejs'
             }
         }
