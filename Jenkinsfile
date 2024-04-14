@@ -8,9 +8,10 @@ pipeline{
         }
         stage("Install Node.js") {
             steps {
-                sh 'curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh'
-                sh 'bash nodesource_setup.sh'
-                sh 'apt-get install -y nodejs'
+                 sh 'curl -LO https://nodejs.org/dist/v14.17.0/node-v14.17.0-linux-x64.tar.xz'
+                sh 'mkdir -p $HOME/node'
+                sh 'tar -xJf node-v14.17.0-linux-x64.tar.xz -C $HOME/node --strip-components=1'
+                sh 'export PATH=$HOME/node/bin:$PATH'
             }
         }
         stage("Build Code"){
