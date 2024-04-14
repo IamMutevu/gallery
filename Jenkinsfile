@@ -1,5 +1,8 @@
 pipeline{
     agent any 
+    tools{
+        npm 'npm'
+    }
     stages{
         stage("Clone Code"){
             steps{
