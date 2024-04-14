@@ -16,4 +16,13 @@ pipeline{
             }
         }
     }
+    post {
+        always {
+            slackSend (
+                channel: env.SLACK_CHANNEL, 
+                color: '#FFFF00', 
+                message: "Build ${env.BUILD_NUMBER} completed"
+            )
+        }
+    }
 }
