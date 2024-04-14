@@ -1,5 +1,9 @@
 pipeline{
     agent any 
+    environment {
+        HEROKU_API_KEY = credentials('heroku-api-key')
+        HEROKU_APP_NAME = 'devops-ip1'
+    }
     tools{
         nodejs 'npm'
     }
@@ -31,8 +35,12 @@ pipeline{
             }
         }
         stage("Deploy") {
-            steps {
-                echo "Deploying code..."
+           steps {
+                script {
+                    sh "echo ':api_key:${HEROKU_API_KEY}' | docker login --username=_ --password-stdin registry.heroku.com"
+                    sh "git remote add heroku https://git.heroku.com/${HEROKU_APP_NAME}.git"
+                    sh "git push heroku master"
+                }
             }
         }
     }
