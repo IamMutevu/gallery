@@ -1,8 +1,7 @@
 pipeline{
-    agent none 
+    agent any 
     stages{
         stage("Clone Code"){
-            agent any 
             steps{
                 git branch: 'master', url: 'https://github.com/IamMutevu/gallery.git'
             }
