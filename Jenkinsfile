@@ -7,12 +7,6 @@ pipeline{
             }
         }
         stage("Prepare and Build Code") {
-            // agent {
-            //     any {
-            //         image 'node:16-alpine' 
-            //         args '-v /home/jenkins/.npm:/root/.npm' 
-            //     }
-            // }
             steps {
                 echo 'Installing dependencies...'
                 sh 'npm install' // Install all dependencies
