@@ -39,8 +39,8 @@ pipeline{
            steps {
                 script {
                     // sh "git remote add heroku https://git.heroku.com/${HEROKU_APP_NAME}.git"
-                    sh "git push heroku master"
-                    // sh "git push https://heroku:${HEROKU_API_KEY}@git.heroku.com/<${HEROKU_APP_NAME}>.git master"
+                    // sh "git push heroku master"
+                    sh "git push https://heroku:${HEROKU_API_KEY}@git.heroku.com/<${HEROKU_APP_NAME}>.git master"
                 }
             }
             post {
