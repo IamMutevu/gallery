@@ -1,8 +1,8 @@
 pipeline{
-    agent none  // No global agent defined
+    agent none 
     stages{
         stage("Clone Code"){
-            agent any  // This can run on any agent
+            agent any 
             steps{
                 git branch: 'master', url: 'https://github.com/IamMutevu/gallery.git'
             }
@@ -10,7 +10,8 @@ pipeline{
         stage("Prepare and Build Code") {
             agent {
                 docker {
-                    image 'node:7.4'  // Using a specific Node.js version
+                    image 'node:16-alpine' 
+                    args '-v /home/jenkins/.npm:/root/.npm' 
                 }
             }
             steps {
