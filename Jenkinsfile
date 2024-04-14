@@ -4,15 +4,18 @@ pipeline{
         nodejs 'npm'
     }
     stages{
-        stage("Clone Code"){
-            steps{
+        stage("Build") {
+            steps {
+                echo "Cloning code..."
                 git branch: 'master', url: 'https://github.com/IamMutevu/gallery.git'
+                echo "Building code..."
+                sh 'npm install' 
             }
         }
-        stage("Prepare and Build Code") {
+        stage("Test") {
             steps {
-                sh 'npm install' 
-                // sh 'node server'
+                echo "Testing code..."
+                sh 'npm test' 
             }
         }
     }
