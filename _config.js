@@ -9,3 +9,4 @@ config.mongoURI = {
 module.exports = config;
 
 // mongodb+srv://mutevu:5yKuyb8KNq4ttVcD@devopscluster.bzqcj9t.mongodb.net/?retryWrites=true&w=majority&appName=devopsCluster
+
