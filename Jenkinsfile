@@ -7,11 +7,16 @@ pipeline{
             }
         }
         stage("Install Node.js") {
+            agent {
+                docker {
+                    image 'node:7.4'
+                }
+            }
             steps {
-                 sh 'curl -LO https://nodejs.org/dist/v14.17.0/node-v14.17.0-linux-x64.tar.xz'
-                sh 'mkdir -p $HOME/node'
-                sh 'tar -xJf node-v14.17.0-linux-x64.tar.xz -C $HOME/node --strip-components=1'
-                sh 'export PATH=$HOME/node/bin:$PATH'
+                withNPM(npmrcConfig:'my-custom-npmrc') {
+                    echo "Performing npm build..."
+                    sh 'npm install'
+                }
             }
         }
         stage("Build Code"){
